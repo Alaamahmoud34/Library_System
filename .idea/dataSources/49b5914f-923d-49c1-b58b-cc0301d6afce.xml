@@ -9,13 +9,13 @@
       <Comment>default administrative connection database</Comment>
       <StateNumber>567</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>1112</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1163</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
       <Relations>sequence|table|17529|17531|1
-sequence|table|17537|17539|1
 sequence|table|17550|17552|1
 sequence|table|17558|17560|1
+sequence|table|24596|24598|1
 </Relations>
     </database>
     <role id="3" parent="1" name="pg_execute_server_program">
@@ -101,7 +101,7 @@ sequence|table|17558|17560|1
       <Comment>standard public schema</Comment>
       <StateNumber>360</StateNumber>
       <Owner>postgres</Owner>
-      <IntrospectionStateNumber>1113</IntrospectionStateNumber>
+      <IntrospectionStateNumber>1164</IntrospectionStateNumber>
       <Current>1</Current>
       <Visible>1</Visible>
     </schema>
@@ -178,9 +178,9 @@ sequence|table|17558|17560|1
       <DataType>bigint</DataType>
     </sequence>
     <sequence id="27" parent="17" name="book_book_id_seq">
-      <ObjectId>17537</ObjectId>
+      <ObjectId>24596</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>1079</StateNumber>
+      <StateNumber>1158</StateNumber>
       <SequenceIdentity>1</SequenceIdentity>
       <CacheSize>1</CacheSize>
       <DataType>bigint</DataType>
@@ -207,14 +207,14 @@ sequence|table|17558|17560|1
       <StateNumber>1083</StateNumber>
     </table>
     <table id="31" parent="17" name="book">
-      <ObjectId>17539</ObjectId>
+      <ObjectId>24598</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>1083</StateNumber>
+      <StateNumber>1158</StateNumber>
     </table>
     <table id="32" parent="17" name="books_out_on_loan">
-      <ObjectId>17545</ObjectId>
+      <ObjectId>24614</ObjectId>
       <Owner>postgres</Owner>
-      <StateNumber>1085</StateNumber>
+      <StateNumber>1162</StateNumber>
     </table>
     <table id="33" parent="17" name="category">
       <ObjectId>17552</ObjectId>
@@ -262,141 +262,145 @@ sequence|table|17558|17560|1
       <Position>1</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1079</StateNumber>
+      <StateNumber>1158</StateNumber>
       <DefaultExpression>nextval(&apos;book_book_id_seq&apos;::regclass)</DefaultExpression>
       <TypeId>20</TypeId>
     </column>
     <column id="41" parent="31" name="book_name">
       <Position>2</Position>
       <DataType>varchar(255)|0s</DataType>
-      <StateNumber>1079</StateNumber>
+      <StateNumber>1158</StateNumber>
       <TypeId>1043</TypeId>
     </column>
     <column id="42" parent="31" name="date_of_publication">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>1099</StateNumber>
+      <StateNumber>1158</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="43" parent="31" name="author_id">
       <Position>4</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1079</StateNumber>
+      <StateNumber>1158</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="44" parent="31" name="category_id">
       <Position>5</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1079</StateNumber>
+      <StateNumber>1158</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <index id="45" parent="31" name="book_pkey">
-      <ObjectId>17543</ObjectId>
-      <StateNumber>1079</StateNumber>
+      <ObjectId>24602</ObjectId>
+      <StateNumber>1158</StateNumber>
       <ColNames>book_id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="46" parent="31" name="book_pkey">
-      <ObjectId>17544</ObjectId>
-      <StateNumber>1079</StateNumber>
+      <ObjectId>24603</ObjectId>
+      <StateNumber>1158</StateNumber>
       <ColNames>book_id</ColNames>
       <UnderlyingIndexName>book_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="47" parent="31" name="fkklnrv3weler2ftkweewlky958">
-      <ObjectId>17569</ObjectId>
-      <StateNumber>1083</StateNumber>
+      <ObjectId>24604</ObjectId>
+      <StateNumber>1158</StateNumber>
       <ColNames>author_id</ColNames>
       <RefTableId>17531</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>author</RefTableName>
       <RefKeyName>author_pkey</RefKeyName>
       <RefColNames>author_id</RefColNames>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <foreign-key id="48" parent="31" name="fkam9riv8y6rjwkua1gapdfew4j">
-      <ObjectId>17574</ObjectId>
-      <StateNumber>1084</StateNumber>
+      <ObjectId>24609</ObjectId>
+      <StateNumber>1158</StateNumber>
       <ColNames>category_id</ColNames>
       <RefTableId>17552</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>category</RefTableName>
       <RefKeyName>category_pkey</RefKeyName>
       <RefColNames>category_id</RefColNames>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <column id="49" parent="32" name="date_issued">
       <Position>1</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>1080</StateNumber>
+      <StateNumber>1162</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="50" parent="32" name="date_due_for_return">
       <Position>2</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>1080</StateNumber>
+      <StateNumber>1162</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="51" parent="32" name="date_returned">
       <Position>3</Position>
       <DataType>timestamp|0s</DataType>
-      <StateNumber>1080</StateNumber>
+      <StateNumber>1162</StateNumber>
       <TypeId>1114</TypeId>
     </column>
     <column id="52" parent="32" name="amount_of_fine">
       <Position>4</Position>
       <DataType>real|0s</DataType>
-      <StateNumber>1080</StateNumber>
+      <StateNumber>1162</StateNumber>
       <TypeId>700</TypeId>
     </column>
     <column id="53" parent="32" name="user_id">
       <Position>5</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1080</StateNumber>
+      <StateNumber>1162</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <column id="54" parent="32" name="book_id">
       <Position>6</Position>
       <DataType>bigint|0s</DataType>
       <NotNull>1</NotNull>
-      <StateNumber>1080</StateNumber>
+      <StateNumber>1162</StateNumber>
       <TypeId>20</TypeId>
     </column>
     <index id="55" parent="32" name="books_out_on_loan_pkey">
-      <ObjectId>17548</ObjectId>
-      <StateNumber>1080</StateNumber>
+      <ObjectId>24617</ObjectId>
+      <StateNumber>1162</StateNumber>
       <ColNames>book_id
 user_id</ColNames>
       <Unique>1</Unique>
     </index>
     <key id="56" parent="32" name="books_out_on_loan_pkey">
-      <ObjectId>17549</ObjectId>
-      <StateNumber>1080</StateNumber>
+      <ObjectId>24618</ObjectId>
+      <StateNumber>1162</StateNumber>
       <ColNames>book_id
 user_id</ColNames>
       <UnderlyingIndexName>books_out_on_loan_pkey</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="57" parent="32" name="fkbedk80txlquhygdfjv5084qxq">
-      <ObjectId>17579</ObjectId>
-      <StateNumber>1085</StateNumber>
+      <ObjectId>24619</ObjectId>
+      <StateNumber>1162</StateNumber>
       <ColNames>user_id</ColNames>
       <RefTableId>17560</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>users</RefTableName>
       <RefKeyName>users_pkey</RefKeyName>
       <RefColNames>user_id</RefColNames>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <foreign-key id="58" parent="32" name="fkdo6r07u9nuhp3486hmgpxbyfu">
-      <ObjectId>17584</ObjectId>
-      <StateNumber>1086</StateNumber>
+      <ObjectId>24624</ObjectId>
+      <StateNumber>1162</StateNumber>
       <ColNames>book_id</ColNames>
-      <RefTableId>17539</RefTableId>
+      <RefTableId>24598</RefTableId>
       <RefColPositions>1</RefColPositions>
       <RefTableName>book</RefTableName>
       <RefKeyName>book_pkey</RefKeyName>
       <RefColNames>book_id</RefColNames>
+      <OnDelete>cascade</OnDelete>
     </foreign-key>
     <column id="59" parent="33" name="category_id">
       <Position>1</Position>

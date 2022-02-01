@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Calendar;
 import java.util.Date;
 
 @Getter
@@ -39,5 +40,21 @@ public class Books_Out_On_Loan {
     @Column
     private float amount_of_fine;
 
+    public Books_Out_On_Loan(User user, Book book) {
+        this.user = user;
+        this.book = book;
+        Date date=new Date();
+        Date_Issued = date;
 
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date);
+
+        if (calendar.get(Calendar.MONTH) == Calendar.DECEMBER) {
+            calendar.set(Calendar.MONTH, Calendar.JANUARY);
+            calendar.set(Calendar.YEAR, calendar.get(Calendar.YEAR) + 1);
+        } else {
+            calendar.roll(Calendar.MONTH, true);
+        }
+        this.setDate_due_for_return(calendar.getTime());
+    }
 }

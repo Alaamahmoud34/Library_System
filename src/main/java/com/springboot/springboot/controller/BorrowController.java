@@ -34,13 +34,11 @@ public class BorrowController {
     }
 
     @PostMapping(value = "/{user_id}/{book_id}")
-    public Books_Out_On_Loan creatBorrow(@PathVariable long user_id,@PathVariable long book_id,@RequestBody Books_Out_On_Loan books_out_on_loan)
+    public Books_Out_On_Loan creatBorrow(@PathVariable long user_id,@PathVariable long book_id)//,@RequestBody Books_Out_On_Loan books_out_on_loan)
     {
         User user=userRepository.findById(user_id).orElseThrow(()-> new ResourceNotFoundException("User not exist in id: "+user_id));
         Book book=bookRepository.findById(book_id).orElseThrow(()-> new ResourceNotFoundException("Book not exist in id: "+book_id));
-        books_out_on_loan.setBook(book);
-        books_out_on_loan.setUser(user);
-        books_out_on_loan.setDate_Issued(new Date());
+        Books_Out_On_Loan books_out_on_loan = new Books_Out_On_Loan(user,book);
         return borrowRepository.save(books_out_on_loan);
     }
 
@@ -60,10 +58,10 @@ public class BorrowController {
         Book book=bookRepository.findById(book_id).orElseThrow(()->new ResourceNotFoundException("Book not exist in id: "+book_id));
         Books_Out_On_Loan updated = borrowRepository.findByUserAndBook(user,book);
 
-        updated.setAmount_of_fine(books_out_on_loan.getAmount_of_fine());
-        updated.setDate_due_for_return(books_out_on_loan.getDate_due_for_return());
         updated.setDate_Issued(books_out_on_loan.getDate_Issued());
+        updated.setDate_due_for_return(books_out_on_loan.getDate_due_for_return());
         updated.setDate_returned(books_out_on_loan.getDate_returned());
+        updated.setAmount_of_fine(books_out_on_loan.getAmount_of_fine());
 
         borrowRepository.save(updated);
         return ResponseEntity.ok(updated);
